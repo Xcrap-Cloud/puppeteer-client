@@ -1,0 +1,41 @@
+{
+  "name": "@xcrap/puppeteer-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/*",
+    "!/**/__tests__"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "xcrap",
+    "transformer",
+    "scrapy",
+    "web scraping"
+  ],
+  "author": "Marcuth",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/node": "^22.13.17",
+    "rollup": "^4.39.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "puppeteer": "^24.5.0"
+  },
+  "peerDependencies": {
+    "@xcrap/core": "^0.0.3",
+    "@xcrap/parser": "^0.0.2"
+  }
+}
