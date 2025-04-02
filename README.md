@@ -1,6 +1,7 @@
 # 🕷️ Xcrap Pupeeteer Client
 
 **Xcrap Puppeteer Client** is a package of the Xcrap framework that implements an HTTP client using the [Puppeteer](https://www.npmjs.com/package/puppeteer) library.
+
 ## 📦 Installation
 
 There are no secrets to installing it, just use your favorite dependency manager. Here is an example using NPM:
