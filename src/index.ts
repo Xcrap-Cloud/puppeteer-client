@@ -15,8 +15,8 @@ export enum PuppeteerClientActionType {
 }
 
 export type PuppeteerClientAction = PuppeteerClientActionFunction | {
-    exec: PuppeteerClientActionFunction
     type: `${PuppeteerClientActionType}`
+    exec: PuppeteerClientActionFunction
 }
 
 export type ExtractActionsResult = {

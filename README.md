@@ -30,7 +30,58 @@ import { extract } from "@xcrap/parser"
 })();
 ```
 
-Adding a proxy
+#### Using Actions
+
+If you want to perform operations on the page before or after requests, you can use the `actions` property, which is an array of functions. Actions are flexible enough that you can do exactly what you would normally do with Puppeteer: login, click buttons, evaluate functions, etc.
+
+```ts
+const response = await client.fetch({
+    url: "https://example.com",
+    actions: [
+        async (page) => {
+            await page.type("#username", "user")
+            await page.type("#password", "mypassword123")
+            await page.click("#submit")
+        }
+    ]
+})
+```
+
+By default, an action is executed after requests. If you want to manually define when it will be executed, you will have to pass an object instead of a simple function:
+
+```ts
+const response = await client.fetch({
+    url: "https://example.com",
+    actions: [
+        {
+            type: "afterRequest", // Executed after the request
+            exec: async (page) => {
+                await page.type("#username", "user")
+                await page.type("#password", "mypassword123")
+                await page.click("#submit")
+            }
+        },
+        {
+            type: "beforeRequest", // Executed before the request
+            func: async (page) => {
+                const width = 1920 + Math.floor(Math.random() * 100)
+                const height = 3000 + Math.floor(Math.random() * 100)
+
+                await page.setViewport({
+                    width: width,
+                    height: height,
+                    deviceScaleFactor: 1,
+                    hasTouch: false,
+                    isLandscape: false,
+                    isMobile: false,
+                })
+            }
+        }
+    ]
+})
+```
+
+#### Adding a proxy
 
 In an HTTP client that extends `BaseClient` we can add a proxy in the constructor as we can see in the following example:
 
@@ -44,18 +95,19 @@ const client = new PuppteerClient({ proxy: "http://47.251.122.81:8888" })
 
 ```ts
 function randomProxy() {
-    const proxies = [
-        "http://47.251.122.81:8888",
-        "http://159.203.61.169:3128"
-    ]
+        const proxies = [
+            "http://47.251.122.81:8888",
+            "http://159.203.61.169:3128"
+        ]
 
-    const randomIndex = Math.floor(Math.random() * proxies.length)
+        const randomIndex = Math.floor(Math.random() * proxies.length)
 
-    return proxies[randomIndex]
-}
+        return proxies[randomIndex]
+    }
 
-const client = new PuppteerClient({ proxy: randomProxy })
+    const client = new PuppteerClient({ proxy: randomProxy })
 ```
+
 #### Using a custom User Agent
 
 In a client that extends `BaseClient` we can also customize the `User-Agent` of the requests. We can do this in two ways:
