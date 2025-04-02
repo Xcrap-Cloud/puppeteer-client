@@ -6,7 +6,7 @@
 There are no secrets to installing it, just use your favorite dependency manager. Here is an example using NPM:
 
 ```cmd
-npm i @xcrap/puppeteer-client @xcrap/core
+npm i @xcrap/puppeteer-client @xcrap/core @xcrap/parser
 ```
 
 > You need to install `@xcrap/parser` and `@xcrap/core` as well because I left them as `peerDependencies`, which means that the package needs `@xcrap/parser` and `@xcrap/core` as dependencies, however, the ones that the user has installed in the project will be used.
