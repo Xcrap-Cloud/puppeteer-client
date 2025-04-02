@@ -95,17 +95,17 @@ const client = new PuppteerClient({ proxy: "http://47.251.122.81:8888" })
 
 ```ts
 function randomProxy() {
-        const proxies = [
-            "http://47.251.122.81:8888",
-            "http://159.203.61.169:3128"
-        ]
+    const proxies = [
+        "http://47.251.122.81:8888",
+        "http://159.203.61.169:3128"
+    ]
 
-        const randomIndex = Math.floor(Math.random() * proxies.length)
+    const randomIndex = Math.floor(Math.random() * proxies.length)
 
-        return proxies[randomIndex]
-    }
+    return proxies[randomIndex]
+}
 
-    const client = new PuppteerClient({ proxy: randomProxy })
+const client = new PuppteerClient({ proxy: randomProxy })
 ```
 
 #### Using a custom User Agent
