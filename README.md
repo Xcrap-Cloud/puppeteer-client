@@ -13,7 +13,9 @@ npm i @xcrap/puppeteer-client @xcrap/core
 
 ## 🚀 Usage
 
-Like any HTTP client, `PuppteerClient` has two methods: `fetch()` to make a request for a specific URL and `fetchMany()` to make requests for multiple URLs at the same time, being able to control concurrency and delays between requests. #### Example usage
+Like any HTTP client, `PuppteerClient` has two methods: `fetch()` to make a request for a specific URL and `fetchMany()` to make requests for multiple URLs at the same time, being able to control concurrency and delays between requests.
+
+### Example usage
 
 ```ts
 import { PuppteerClient } from "@xcrap/puppeteer-client"
@@ -30,7 +32,7 @@ import { extract } from "@xcrap/parser"
 })();
 ```
 
-#### Using Actions
+### Using Actions
 
 If you want to perform operations on the page before or after requests, you can use the `actions` property, which is an array of functions. Actions are flexible enough that you can do exactly what you would normally do with Puppeteer: login, click buttons, evaluate functions, etc.
 
@@ -81,7 +83,7 @@ const response = await client.fetch({
 })
 ```
 
-#### Adding a proxy
+### Adding a proxy
 
 In an HTTP client that extends `BaseClient` we can add a proxy in the constructor as we can see in the following example:
 
@@ -108,7 +110,7 @@ function randomProxy() {
 const client = new PuppteerClient({ proxy: randomProxy })
 ```
 
-#### Using a custom User Agent
+### Using a custom User Agent
 
 In a client that extends `BaseClient` we can also customize the `User-Agent` of the requests. We can do this in two ways:
 
@@ -134,7 +136,7 @@ function randomUserAgent() {
 const client = new PuppteerClient({ userAgent: randomUserAgent })
 ```
 
-#### Using custom Proxy URL
+### Using custom Proxy URL
 
 In a client that extends `BaseClient` we can use proxy URLs, I don't know how to explain to you how they work, but I kind of discovered this kind of porxy when I was trying to solve the CORS problem by making a request on the client side, and then I met the *CORS Proxy*. Here I have a [template](https://gist.github.com/marcuth/9fbd321b011da44d1287faae31a8dd3a) for one for CloudFlare Workers in case you want to roll your own.
 
