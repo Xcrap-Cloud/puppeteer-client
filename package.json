@@ -1,7 +1,7 @@
 {
   "name": "@xcrap/puppeteer-client",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Xcrap Puppeteer Client is a package of the Xcrap framework that implements an HTTP client using the Puppeteer library.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
