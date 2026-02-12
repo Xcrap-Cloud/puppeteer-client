@@ -7,10 +7,10 @@
 There are no secrets to installing it, just use your favorite dependency manager. Here is an example using NPM:
 
 ```cmd
-npm i @xcrap/puppeteer-client @xcrap/core @xcrap/parser
+npm i @xcrap/puppeteer-client @xcrap/core @xcrap/extractor
 ```
 
-> You need to install `@xcrap/parser` and `@xcrap/core` as well because I left them as `peerDependencies`, which means that the package needs `@xcrap/parser` and `@xcrap/core` as dependencies, however, the ones that the user has installed in the project will be used.
+> You need to install `@xcrap/extractor` and `@xcrap/core` as well because I left them as `peerDependencies`, which means that the package needs `@xcrap/extractor` and `@xcrap/core` as dependencies, however, the ones that the user has installed in the project will be used.
 
 ## 🚀 Usage
 
@@ -20,14 +20,14 @@ Like any HTTP client, `PuppteerClient` has two methods: `fetch()` to make a requ
 
 ```ts
 import { PuppteerClient } from "@xcrap/puppeteer-client"
-import { extract } from "@xcrap/parser"
+import { extract } from "@xcrap/extractor"
 
 ;(async() => {
     const client = new PuppteerClient()
     const url = "https://example.com"
     const response = await client.fetch({ url: url })
     const parser = response.asHtmlParser()
-    const pageTitle = await parser.parseFist({ query: "title", extractor: extract("innerText") })
+    const pageTitle = await parser.extractValue({ query: "title", extractor: extract("innerText") })
 
     console.log("Page Title:", pageTitle)
 })();
@@ -153,7 +153,7 @@ const client = new PuppteerClient({ proxyUrl: "https://my-proxy-app.my-username.
 
 ```ts
 function randomProxyUrl() {
-const proxyUrls = [
+    const proxyUrls = [
         "https://my-proxy-app.my-username-1.workers.dev",
         "https://my-proxy-app.my-username-2.workers.dev"
     ]
